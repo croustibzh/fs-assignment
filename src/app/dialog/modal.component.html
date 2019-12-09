@@ -1,0 +1,19 @@
+<div style="width: 100%; text-align: center;">
+    <h1 mat-dialog-title>Admin Login</h1>
+
+    <div mat-dialog-content style="text-align: center; width: 100%;">
+        <mat-list>
+            <mat-form-field>
+                <input matInput [(ngModel)]="user" placeholder="Username/Email">
+            </mat-form-field>
+            <br />
+            <mat-form-field>
+                <input matInput type="password" [(ngModel)]="pass" placeholder="Password">
+            </mat-form-field>
+        </mat-list>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button (click)="onNoClick()">Go back</button>
+        <button mat-raised-button [mat-dialog-close]="user" cdkFocusInitial (click)="onClick(user,pass)">Login</button>
+    </div>
+</div>

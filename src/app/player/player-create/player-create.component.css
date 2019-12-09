@@ -1,0 +1,17 @@
+.container{
+    width: 80%;
+    margin: auto;
+}
+
+.main {
+    width: 100%;
+    margin-top: 5rem;
+}
+
+mat-form-field {
+    display: block;
+}
+
+button {
+    margin: 2em;
+}
