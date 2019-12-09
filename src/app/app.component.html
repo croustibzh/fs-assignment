@@ -1,11 +1,4 @@
-<mat-toolbar>
-    <span flex></span>
-    <button mat-raised-button (click)="openDialog()">Login</button>
-  </mat-toolbar>
-  <li *ngIf="loggedIn==true">
-    <p style="font-weight: bold"> Logged in as {{user}}</p>
-  </li>
-
-<div class="main">
-    <app-player-list></app-player-list>
-</div>
+<app-navbar>
+  <app-guest-table></app-guest-table>
+  <app-games-table></app-games-table>
+</app-navbar>

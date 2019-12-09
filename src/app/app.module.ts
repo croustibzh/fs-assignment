@@ -10,13 +10,30 @@ import { PlayerCreateComponent } from './player/player-create/player-create.comp
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalComponent } from './dialog/modal.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { LoginComponent } from './login/login.component';
+import { GuestTableComponent } from './guest-table/guest-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { GamesTableComponent } from './games-table/games-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlayerListComponent,
     PlayerCreateComponent,
-    ModalComponent
+    ModalComponent,
+    NavbarComponent,
+    LoginComponent,
+    GuestTableComponent,
+    GamesTableComponent
     
   ],
   imports: [
@@ -25,10 +42,19 @@ import { ModalComponent } from './dialog/modal.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    FormsModule
+    FormsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
     ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[ModalComponent]
+  entryComponents:[LoginComponent]
 })
 export class AppModule { }
