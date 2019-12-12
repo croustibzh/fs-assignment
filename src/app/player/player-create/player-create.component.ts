@@ -23,7 +23,7 @@ export class PlayerCreateComponent{
        return;}
 
     
-    this.playS.addPlayer(form.value._id, form.value.username, form.value.rank, form.value.score, form.value.fGame, form.value.status, form.value.time);
+    this.playS.addPlayer(form.value.id, form.value.username, form.value.rank, form.value.score, form.value.fGame, form.value.status, form.value.time);
     form.resetForm();
   }
   

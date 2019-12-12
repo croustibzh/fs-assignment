@@ -13,8 +13,7 @@ export class PlayerListComponent implements OnInit{
 
   players : Player[] = [];
   private playersSub: Subscription;
-  displayedColumns: string[] = ['username', 'rank', 'score', 'fGame', 'time','update'];
-
+  displayedColumns: string[] = ['username', 'rank', 'score', 'fGame', 'time', 'status','update'];
   
   constructor(public playS : PlayersService) { }
 

@@ -33,27 +33,29 @@ export class PlayersService {
             .subscribe(transformedPlayers =>{
                 this.players = transformedPlayers;
                 this.playersUpdated.next([...this.players]);
-            })
+            });
     }
 
     getPlayersUpdateListener() {
         return this.playersUpdated.asObservable();
     }
 
-    addPlayer(id: string, username: string, rank: number, score: number, fGame: string, status: string, time: string) {
+    addPlayer(id:string, username: string, rank: number, score: number, fGame: string, status: string, time: string) {
         const player: Player = { id:null, username: username, rank: rank, score: score, fGame: fGame, status: status, time: time };
-        this.http.post<{ message: string }>(this.playersURL, player).subscribe((responseData) => {
-            console.log(responseData);
+        this.http.post<{ message: string }>(this.playersURL, player)
+        .subscribe((responseData) => {
+            console.log(responseData.message);
         });
         this.players.push(player);
-        this.playersUpdated.next([...this.players])
-        this.getPlayersUpdateListener();
+        this.playersUpdated.next([...this.players]);
     }
 
     deletePlayer(id :string){
         this.http.delete("http://localhost:3000/api/players/"+id)
         .subscribe(()=>{
-            console.log("player service deleted the player")
+            const updatedPlayers = this.players.filter(player => player.id != id);
+            this.players = updatedPlayers;
+            this.playersUpdated.next([...this.players]);
         });
     }
 }
