@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { PlayersService} from '../players.service';
 import { Player } from '../player.model';
-
 @Component({
   selector: 'app-player-create',
   templateUrl: './player-create.component.html',
@@ -34,7 +33,7 @@ export class PlayerCreateComponent{
       form.resetForm();
     }
     this.playS.selectedPlayer = {
-      _id: "",
+      id:"",
       username: "",
       rank: 0,
       score: 0,

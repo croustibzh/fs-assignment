@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const players = mongoose.Schema({
+const player = mongoose.Schema({
     username: {type: String, required: true},
     rank: {type:Number, require: true},
     score :{type: Number, required:true},
@@ -11,4 +11,4 @@ const players = mongoose.Schema({
  }
 );
 
-module.exports = mongoose.model('playerSchema', players);
+module.exports = mongoose.model('playerSchemas', player);
