@@ -1,6 +1,7 @@
 const mongoose =require('mongoose')
 
 const game = mongoose.Schema({
+  _id:{type:String, required:true},
   title:{type:String, required:true},
   platform:{type:String, required:true},
   genre:{type:String, required:true},

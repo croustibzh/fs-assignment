@@ -13,7 +13,17 @@ mongoose.connect('mongodb+srv://comp3123:admin@cluster0-3eshe.mongodb.net/player
     .catch(() => {
         console.log('Connection failed');
     });
-// POPULATES THE GAMES COLLECTION
+    app.use((req, res, next) => {
+      res.setHeader('Access-Control-Allow-Origin', "*");
+      res.setHeader('Access-Control-Allow-Headers', "Origin, X-Requested-Width, Content-Type, Accept")
+      res.setHeader('Access-Control-Allow-Methods', "GET, POST, PATCH, DELETE, PUT, OPTIONS");
+      next();
+  });
+
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
+
+// ------------------------------------------------------------    POPULATES THE GAMES COLLECTION  -------------------------------------------------------------------
 var db = mongoose.connection;
 
 db.once('open', function() {
@@ -88,6 +98,9 @@ db.once('open', function() {
     release:'20/03/2007',
     status:'Active'
   }];
+  Game.collection.remove({},console.log('DB erased'))
+
+
   Game.collection.insert(games, function (err, docs) {
     if (err){
         return console.error(err);
@@ -97,15 +110,16 @@ db.once('open', function() {
   });
 });
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', "*");
-    res.setHeader('Access-Control-Allow-Headers', "Origin, X-Requested-Width, Content-Type, Accept")
-    res.setHeader('Access-Control-Allow-Methods', "GET, POST, PATCH, DELETE, PUT, OPTIONS");
-    next();
-});
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.get('/api/games', (req, res, next) => {
+  Game.find((err,docs)=>{
+      if (!err) {
+          res.send({games: docs});
+      }
+  })
+});
+// -------------------------------------------------------------------  PLAYER COLLECTION API ENDPOINTS ---------------------------------------------------------------------------------------------
+
 
 app.get('/api/players', (req, res, next) => {
     Player.find((err,docs)=>{
@@ -120,7 +134,7 @@ app.get('/api/players', (req, res, next) => {
         return res.status(400).send('No record with given id: ${req.params.id}');
      else {
 
-         Player.findById(req.params.id, (err, doc) => {
+         Player.findOne(req.params.id, (err, doc) => {
              if (!err) { res.json(doc); }
              else { console.log("Error fetching player: " + JSON.stringify(err, undefined, 2)) }
          });
