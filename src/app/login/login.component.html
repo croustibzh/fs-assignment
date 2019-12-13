@@ -5,15 +5,15 @@
     <div mat-dialog-content style="text-align: center; width: 100%;">
         <mat-list>
             <mat-form-field>
-                <input matInput  placeholder="Username/Email">
+                <input matInput  placeholder="Username/Email" [(ngModel)]= "user" >
             </mat-form-field>
             <br />
             <mat-form-field>
-                <input matInput type="password"  placeholder="Password">
+                <input matInput type="password"  placeholder="Password" [(ngModel)]= "pass" >
             </mat-form-field>
         </mat-list>
     </div>
     <div mat-dialog-actions>
-        <button mat-button [mat-dialog-close]="user" cdkFocusInitial (click)="onClick(user,pass)">Login</button>
+        <button mat-button  (click)="onClick()">Login</button>
     </div>
-</div>
+</div>      

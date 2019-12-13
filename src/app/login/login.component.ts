@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject} from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,20 +12,34 @@ export class LoginComponent implements OnInit {
   adminP= "p@ss";
   user :string;
   pass: string;
-  loggedIn: boolean;
-  constructor() { }
-  
-  onClick(usr:string, passwrd:string ){
+  login: boolean;
+
+
+  constructor(public dialogRef: MatDialogRef<LoginComponent>, @Inject(MAT_DIALOG_DATA) public data: any, public router: Router) { }
+ 
+
+  onClick(){
 
     console.log(this.user);
     console.log(this.pass);
-    if (usr == this.adminU && this.pass == this.adminP){
-      this.loggedIn = true;
-      console.log("logged in");
-    } else { console.log("didn't log in ");}
+    if (this.user == this.adminU && this.pass == this.adminP){
+      this.login = true;
+      this.isAuthenticated();
+      this.dialogRef.close(this.login);
+    } else { 
+      this.login = false;
+      console.log("didn't log in ");
+      this.dialogRef.close(this.login);
+    }
+  }
 
-    
-    console.log("Logged in : " + this.loggedIn);
+  isAuthenticated(){
+    const promise = new Promise(
+      (resolve, reject) =>{
+        resolve(this.login);
+      }
+    );
+    return promise;
   }
   ngOnInit() {
   }

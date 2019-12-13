@@ -3,7 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { GuestTableDataSource, GuestTableItem } from './guest-table-datasource';
-
+import { JoinGameComponent } from '../join-game/join-game.component';
+import {MatDialog} from '@angular/material'
 @Component({
   selector: 'app-guest-table',
   templateUrl: './guest-table.component.html',
@@ -14,10 +15,7 @@ export class GuestTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatTable, {static: false}) table: MatTable<GuestTableItem>;
   dataSource: GuestTableDataSource;
-
-  joinGame(){
-    
-  }
+  
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['player', 'rank', 'score', 'time','gamesPlayed','status','space'];
   ngOnInit() {
@@ -29,4 +27,9 @@ export class GuestTableComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
+  constructor( public dialog: MatDialog) {}
+  joinGame(): void {
+    const dialogRef = this.dialog.open(JoinGameComponent);
+  }
+
 }
