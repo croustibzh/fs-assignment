@@ -143,18 +143,17 @@ app.get('/api/players', (req, res, next) => {
 
 
 app.post('/api/players', (req, res, next) => {
-    const player = new Player({
+    new Player({
+      _id:req.body._id,
         username: req.body.username,
         rank: req.body.rank,
         score: req.body.score,
         time: req.body.time,
         fGame: req.body.fGame,
         status: req.body.status
-    })
-
-    player.save((err, player) => {
+    }).save((err, playr) => {
         if (err) return console.error(err);
-        console.log(player.username + " saved to players collection.");
+        console.log(playr.username + " saved to players collection.");
     });
 });
 

@@ -1,7 +1,7 @@
 const mongoose =require('mongoose')
 
 const gameschem = mongoose.Schema({
-//  _id:{type:String, required:true},
+  _id:{type:String, required:true},
   title:{type:String, required:true},
   platform:{type:String, required:true},
   genre:{type:String, required:true},

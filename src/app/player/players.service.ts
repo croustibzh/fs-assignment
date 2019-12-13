@@ -16,23 +16,29 @@ export class PlayersService {
 
     constructor(private http: HttpClient) {
     }
-    
+
     getPlayers(){
         this.http
-        .get<{players:any}>(
+        .get<{players:Player[]}>(
             this.playersURL
             )
             .pipe(map((pData)=>{
                 return pData.players.map(player=>{
                     return {
-                        id:player._id, username: player.username, rank: player.rank, 
-                        score: player.score, fGame: player.fGame, status: player.status, time: player.time 
+                        _id:player._id,
+                        username: player.username,
+                        rank: player.rank,
+                        score: player.score,
+                        fGame: player.fGame,
+                        status: player.status,
+                        time: player.time
                     };
                 });
             }))
             .subscribe(transformedPlayers =>{
                 this.players = transformedPlayers;
                 this.playersUpdated.next([...this.players]);
+                this.getPlayersUpdateListener();
             })
     }
 
@@ -41,7 +47,7 @@ export class PlayersService {
     }
 
     addPlayer(id: string, username: string, rank: number, score: number, fGame: string, status: string, time: string) {
-        const player: Player = { id:null, username: username, rank: rank, score: score, fGame: fGame, status: status, time: time };
+        const player: Player = {_id:null, username: username, rank: rank, score: score, fGame: fGame, status: status, time: time };
         this.http.post<{ message: string }>(this.playersURL, player).subscribe((responseData) => {
             console.log(responseData);
         });
@@ -53,7 +59,9 @@ export class PlayersService {
     deletePlayer(id :string){
         this.http.delete("http://localhost:3000/api/players/"+id)
         .subscribe(()=>{
-            console.log("player service deleted the player")
-        });
+            console.log("player service deleted the player");
+            this.playersUpdated.next([...this.players])
+            this.getPlayersUpdateListener();
+          });
     }
 }

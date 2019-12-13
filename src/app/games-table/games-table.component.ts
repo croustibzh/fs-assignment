@@ -16,7 +16,7 @@ export class GamesTableComponent implements OnInit {
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatTable, {static: false}) table: MatTable<Game>;
 
-  GamesData: any = [];
+  GamesData: Game[] = [];
   public gamesSub: Subscription
   dataSource: MatTableDataSource<Game[]>;
 
@@ -31,7 +31,6 @@ export class GamesTableComponent implements OnInit {
   this.gamesSub = this.gS.getGamessUpdateListener()
   .subscribe((game: Game[])=>
   this.GamesData = game)
-  console.log(this.GamesData);
-  this.dataSource = this.GamesData;
+  console.log(this.GamesData)
   }
 }

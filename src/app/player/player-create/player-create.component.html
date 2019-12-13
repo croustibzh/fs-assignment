@@ -1,9 +1,8 @@
 <div class="main">
     <div class="container">
     <form (ngSubmit)="onAddPlayer(playForm)" #playForm="ngForm">
-        
         <mat-card>
-            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="playS.selectedPlayer._id"> 
+            <input type="hidden" name="id" #id="ngModel" [(ngModel)]="playS.selectedPlayer._id">
             <mat-form-field>
                 <input matInput ngModel name="username"  placeholder="Username">
             </mat-form-field>
@@ -47,7 +46,7 @@
             </mat-form-field>
             <button mat-raised-button type="submit" [disabled]="playForm.invalid"  color="primary">Add Player</button>
             <button mat-raised-button color="accent">Go back</button>
-            <button mat-raised-button color="warn" (click)="resetFrom()">Reset Form</button>
+            <button mat-raised-button color="warn" (click)="resetForm()">Reset Form</button>
     </mat-card></form>
     </div>
 </div>

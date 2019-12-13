@@ -11,29 +11,28 @@ import { Player } from '../player.model';
 export class PlayerCreateComponent{
 
   constructor(public playS: PlayersService) { }
-  
+
   ngOnInit(){
     this.resetForm();
   }
-  
+
 
   onAddPlayer(form: NgForm){
     if (form.invalid){
        console.log(JSON.stringify(form));
        return;}
 
-    
-    this.playS.addPlayer(form.value._id, form.value.username, form.value.rank, form.value.score, form.value.fGame, form.value.status, form.value.time);
-    form.resetForm();
+
+    this.playS.addPlayer(form.value.id, form.value.username, form.value.rank, form.value.score, form.value.fGame, form.value.status, form.value.time);
   }
-  
-  
+
+
   resetForm(form?: NgForm) {
     if (form) {
       form.resetForm();
     }
     this.playS.selectedPlayer = {
-      id:"",
+      _id:"",
       username: "",
       rank: 0,
       score: 0,
