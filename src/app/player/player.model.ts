@@ -4,6 +4,6 @@ username: string;
 rank: number;
 score: number;
 status:string;
-time: string;
+time: number;
 fGame: string;
 }

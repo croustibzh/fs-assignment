@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup } from '@angular/forms';
 import { PlayersService} from '../players.service';
 import { Player } from '../player.model';
 @Component({
@@ -11,6 +11,8 @@ import { Player } from '../player.model';
 export class PlayerCreateComponent{
 
   constructor(public playS: PlayersService) { }
+  playForm: FormGroup;
+  selectedPlayer: Player = this.playS.selectedPlayer;
 
   ngOnInit(){
     this.resetForm();
@@ -24,6 +26,7 @@ export class PlayerCreateComponent{
 
 
     this.playS.addPlayer(form.value.id, form.value.username, form.value.rank, form.value.score, form.value.fGame, form.value.status, form.value.time);
+    form.resetForm();
   }
 
 
@@ -36,7 +39,7 @@ export class PlayerCreateComponent{
       username: "",
       rank: 0,
       score: 0,
-      time:"",
+      time:0,
       status:"",
       fGame:""
     }

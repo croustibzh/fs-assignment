@@ -13,10 +13,12 @@ export class LoginComponent implements OnInit {
   user :string;
   pass: string;
   login: boolean;
+  hide:boolean = true;
+
 
 
   constructor(public dialogRef: MatDialogRef<LoginComponent>, @Inject(MAT_DIALOG_DATA) public data: any, public router: Router) { }
- 
+
 
   onClick(){
 
@@ -26,7 +28,7 @@ export class LoginComponent implements OnInit {
       this.login = true;
       this.isAuthenticated();
       this.dialogRef.close(this.login);
-    } else { 
+    } else {
       this.login = false;
       console.log("didn't log in ");
       this.dialogRef.close(this.login);

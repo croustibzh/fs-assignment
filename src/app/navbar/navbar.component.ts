@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  
+
   loggedIn:false;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -22,7 +22,12 @@ export class NavbarComponent {
   constructor(private breakpointObserver: BreakpointObserver, public dialog: MatDialog, private router: Router) {}
   openLogin(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
-    });
+    width: '35%',
+    height: '25%',
+    direction: "ltr",
+    autoFocus:true,
+
+     });
 
     dialogRef.afterClosed().subscribe(result => {
       this.loggedIn = result;

@@ -5,7 +5,7 @@ const player = mongoose.Schema({
   rank: { type: Number, require: true },
   score: { type: Number, required: true },
   status: { type: String, required: true },
-  time: { type: String, required: true },
+  time: { type: Number, required: true },
   fGame: { type: String, required: true }
 });
 

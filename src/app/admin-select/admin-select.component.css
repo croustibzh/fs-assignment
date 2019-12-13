@@ -9,3 +9,8 @@
 .selector{
     width: 50%;
 }
+
+#spacer {
+    justify-content: flex-end;
+
+  }
