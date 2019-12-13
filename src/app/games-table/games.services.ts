@@ -1,6 +1,6 @@
 import { Game } from './game.model';
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+import { Subject} from 'rxjs';
 import { HttpClient } from "@angular/common/http";
 import { map } from 'rxjs/operators';
 
@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class GamesService {
 
-    private games: Game[]=[];
+    public games: Game[]=[];
     private gamesUpdated = new Subject<Game[]>();
     constructor(private http: HttpClient) {
     }
@@ -37,7 +37,7 @@ export class GamesService {
       });
 }
 
-getGamessUpdateListener() {
+getGamesUpdateListener() {
   return this.gamesUpdated.asObservable();
 }
 }

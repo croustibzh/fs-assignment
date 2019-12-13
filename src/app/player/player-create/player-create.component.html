@@ -24,7 +24,6 @@
           </mat-select>
         </mat-form-field>
 
-<<<<<<< HEAD
         <mat-form-field>
           <input matInput ngModel name="score" type="number" ng-pattern="/^[0-9]{1,7}$/" placeholder="Score" ng-required="score" required>
         </mat-form-field>
@@ -35,7 +34,7 @@
 
         <mat-form-field>
           <mat-select ngModel name="fGame" placeholder="Favourite game"  ng-required="fGame" required>
-            <mat-option value="Overwatch">Overwatch</mat-option>
+            <mat-option *ngFor="let g of gameList"  value="{{g.title}}">{{g.title}}</mat-option>
           </mat-select>
         </mat-form-field>
 
@@ -51,26 +50,4 @@
       </mat-card>
     </form>
   </div>
-=======
-            <mat-form-field>
-                <mat-select ngModel name="fGame" placeholder="Favourite game:">
-                    <mat-option value="Overwatch">Overwatch</mat-option>
-                    <mat-option value="option">Option</mat-option>
-                    <mat-option value="option">Option</mat-option>
-                    <mat-option value="option">Option</mat-option>
-                    <mat-option value="option">Option</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-select ngModel name="status" placeholder="Status:">
-                    <mat-option value="false">Available</mat-option>
-                    <mat-option value="true">Non Available</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <button mat-raised-button type="submit" [disabled]="playForm.invalid"  color="primary">Add Player</button>
-            <button mat-raised-button color="accent">Go back</button>
-            <button mat-raised-button color="warn" (click)="resetForm()">Reset Form</button>
-    </mat-card></form>
-    </div>
->>>>>>> 9f575b98aa7ea26d65b118f3cc4d77d055b5bf4e
 </div>

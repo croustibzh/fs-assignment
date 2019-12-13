@@ -17,7 +17,7 @@ export class PlayerListComponent implements OnInit{
   private playersSub: Subscription;
   displayedColumns: string[] = ['username', 'rank', 'score', 'fGame', 'time','status','update'];
 
-  
+
   constructor(public playS : PlayersService, public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -32,9 +32,11 @@ export class PlayerListComponent implements OnInit{
     this.playS.deletePlayer(id);
   }
   joinGame(id:string): void {
-    const dialogRef = this.dialog.open(JoinGameComponent);
+    const dialogRef = this.dialog.open(JoinGameComponent,{
+      width:'500px',
+      height:'35%'
+    });
   }
 }
-  
 
-  
+

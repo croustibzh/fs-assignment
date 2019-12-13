@@ -3,7 +3,7 @@ _id:string;
 username: string;
 rank: number;
 score: number;
-status:string;
+status:boolean;
 time: number;
 fGame: string;
 }

@@ -16,7 +16,7 @@ export class PlayersService {
     rank: 0,
     score: 0,
     time: 0,
-    status: "",
+    status: false,
     fGame: ""
   };
 
@@ -57,7 +57,7 @@ export class PlayersService {
     rank: number,
     score: number,
     fGame: string,
-    status: string,
+    status: boolean,
     time: number
   ) {
     const player: Player = {

@@ -31,14 +31,14 @@
     <!-- Add Content Here
     <input matInput  placeholder="Search" [(ngModel)]= "search" > -->
     <!--<router-outlet></router-outlet>-->
-    
+
     <div *ngIf="loggedIn; else guest">
       <app-admin-select></app-admin-select>
     </div>
-    
+
     <ng-template #guest>
       <app-player-list></app-player-list>
     </ng-template>
-    
+
   </mat-sidenav-content>
 </mat-sidenav-container>

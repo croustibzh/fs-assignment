@@ -1,7 +1,11 @@
+import { Subscription } from 'rxjs';
+import { GamesService } from './../../games-table/games.services';
+import { Game } from './../../games-table/game.model';
 import { Component, OnInit } from '@angular/core';
 import { NgForm, FormGroup } from '@angular/forms';
 import { PlayersService} from '../players.service';
 import { Player } from '../player.model';
+
 @Component({
   selector: 'app-player-create',
   templateUrl: './player-create.component.html',
@@ -10,12 +14,19 @@ import { Player } from '../player.model';
 })
 export class PlayerCreateComponent{
 
-  constructor(public playS: PlayersService) { }
+  constructor(public playS: PlayersService, public gService: GamesService) { }
   playForm: FormGroup;
+
   selectedPlayer: Player = this.playS.selectedPlayer;
+  gameList :Game[] =[];
+  gameListener : Subscription;
+
 
   ngOnInit(){
-    this.resetForm();
+    this.gService.getGames()
+    this.gameListener = this.gService.getGamesUpdateListener()
+    .subscribe((games: Game[])=>
+    this.gameList= games);
   }
 
 
@@ -40,7 +51,7 @@ export class PlayerCreateComponent{
       rank: 0,
       score: 0,
       time:0,
-      status:"",
+      status:true,
       fGame:""
     }
   }
