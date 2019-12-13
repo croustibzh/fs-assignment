@@ -14,8 +14,8 @@ export class GamesService {
     }
 
     getGames(){
-      this.http
-      .get<{games:Game[]}>('http://localhost:3000/api/games'
+      return this.http
+      .get<{games: Game[]}>('http://localhost:3000/api/games'
       )
       .pipe(map((gData)=>{
           return gData.games.map(resGame=>{

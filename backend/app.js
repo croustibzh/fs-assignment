@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const app = express();
 let ObjectId = require('mongoose').Types.ObjectId;
 const Player = require('./Model/player');
-const Game = require('./model/game')
+const GameM = require('./model/game')
 
 mongoose.connect('mongodb+srv://comp3123:admin@cluster0-3eshe.mongodb.net/playersDB?retryWrites=true&w=majority')
     .then(() => {
@@ -98,10 +98,10 @@ db.once('open', function() {
     release:'20/03/2007',
     status:'Active'
   }];
-  Game.collection.remove({},console.log('DB erased'))
+  GameM.collection.remove({},console.log('DB erased'))
 
 
-  Game.collection.insert(games, function (err, docs) {
+  GameM.collection.insert(games, function (err, docs) {
     if (err){
         return console.error(err);
     } else {
@@ -112,7 +112,7 @@ db.once('open', function() {
 
 
 app.get('/api/games', (req, res, next) => {
-  Game.find((err,docs)=>{
+  GameM.find((err,docs)=>{
       if (!err) {
           res.send({games: docs});
       }
