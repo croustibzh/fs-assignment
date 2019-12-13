@@ -1,6 +1,7 @@
 const mongoose =require('mongoose')
 
-const game = mongoose.Schema({
+const gameschem = mongoose.Schema({
+//  _id:{type:String, required:true},
   title:{type:String, required:true},
   platform:{type:String, required:true},
   genre:{type:String, required:true},
@@ -10,4 +11,4 @@ const game = mongoose.Schema({
   status:{type:Boolean, required:true},
 });
 
-module.exports = mongoose.model('gameSchema', game)
+module.exports = mongoose.model('gameSchema', gameschem)

@@ -1,9 +1,10 @@
 export interface Game {
+  id:string;
   title:string;
-  plateform:string;
+  platform:string;
   genre:string;
   rating:string;
-  pulisher:string;
+  publisher:string;
   release:Date;
   status:boolean;
 }
