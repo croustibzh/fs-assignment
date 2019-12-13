@@ -26,7 +26,6 @@ import { GamesTableComponent } from './games-table/games-table.component';
 import { AdminSelectComponent } from './admin-select/admin-select.component';
 import { JoinGameComponent } from './join-game/join-game.component';
 import { EditPlayerComponent } from './edit-player/edit-player.component';
-import { Route } from '@angular/compiler/src/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth-guard.service';
 import { AdminPlayersComponent } from './admin-players/admin-players.component';
@@ -53,6 +52,7 @@ const appRoutes: Routes =[
     AdminPlayersComponent,
     AdminPlayerListComponent
     
+
   ],
   imports: [
     BrowserModule,

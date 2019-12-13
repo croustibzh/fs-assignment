@@ -8,37 +8,36 @@ import { map } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class GamesService {
 
-    private players: Game[]=[];
-    private playersUpdated = new Subject<Game[]>();
-
-    public playersURL ='http://localhost:3000/api/players';
-    selectedPlayer: Game;
-
+    private games: Game[]=[];
+    private gamesUpdated = new Subject<Game[]>();
     constructor(private http: HttpClient) {
     }
 
-
-
-    getPlayers(){
-  this.http
-  .get<{players:any}>(
-      this.playersURL
+    getGames(){
+      return this.http
+      .get<{games: Game[]}>('http://localhost:3000/api/games'
       )
-      .pipe(map((pData)=>{
-          return pData.players.map(player=>{
+      .pipe(map((gData)=>{
+          return gData.games.map(resGame=>{
               return {
-                  id:player._id, username: player.username, rank: player.rank,
-                  score: player.score, fGame: player.fGame, status: player.status, time: player.time
+                id:resGame.id,
+                title:resGame.title,
+                platform:resGame.platform,
+                genre:resGame.genre,
+                rating:resGame.rating,
+                publisher:resGame.publisher,
+                release:resGame.release,
+                status:resGame.status,
               };
           });
       }))
-      .subscribe(transformedPlayers =>{
-          this.players = transformedPlayers;
-          this.playersUpdated.next([...this.players]);
+      .subscribe(transformedGames =>{
+          this.games = transformedGames;
+          this.gamesUpdated.next([...this.games]);
       });
 }
 
-getPlayersUpdateListener() {
-  return this.playersUpdated.asObservable();
+getGamessUpdateListener() {
+  return this.gamesUpdated.asObservable();
 }
 }
