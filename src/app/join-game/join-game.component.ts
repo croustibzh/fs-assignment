@@ -7,8 +7,10 @@ import { Player } from '../player/player.model';
   styleUrls: ['./join-game.component.css']
 })
 export class JoinGameComponent implements OnInit {
-
-  constructor(public dialogRef: MatDialogRef<JoinGameComponent>,@Inject(MAT_DIALOG_DATA) public data: Player) { }
+  
+  constructor(public dialogRef: MatDialogRef<JoinGameComponent>,@Inject(MAT_DIALOG_DATA) public data: any) { 
+    console.log(this.data);
+    }
 
   ngOnInit() {
   }

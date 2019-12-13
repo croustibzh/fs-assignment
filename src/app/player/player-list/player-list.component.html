@@ -50,7 +50,7 @@
               <!-- Username Column -->
         <ng-container matColumnDef="update">
                 <th mat-header-cell *matHeaderCellDef></th>
-                <td mat-cell *matCellDef="let player"><button mat-raised-button color="accent" disabled="{{player.status}}" (click)="joinGame(player.id)">join</button></td>
+                <td mat-cell *matCellDef="let player"><button mat-raised-button color="accent"  (click)="joinGame(player.id)">Join</button> </td>
               </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
