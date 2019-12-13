@@ -32,10 +32,14 @@ export class PlayerListComponent implements OnInit{
     this.playS.deletePlayer(id);
   }
   joinGame(id:string): void {
+<<<<<<< HEAD
     const dialogRef = this.dialog.open(JoinGameComponent,{
       width:'500px',
       height:'35%'
     });
+=======
+    const dialogRef = this.dialog.open(JoinGameComponent,{data: { any: this.players[id]}} );
+>>>>>>> a90e4161e6f712365c4b0ee80518f799818762ec
   }
 }
 
