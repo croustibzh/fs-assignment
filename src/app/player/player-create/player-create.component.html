@@ -40,8 +40,8 @@
             </mat-form-field>
             <mat-form-field>
                 <mat-select ngModel name="status" placeholder="Status:">
-                    <mat-option value="Available">Available</mat-option>
-                    <mat-option value="NotAv">Non Available</mat-option>
+                    <mat-option value="false">Available</mat-option>
+                    <mat-option value="true">Non Available</mat-option>
                 </mat-select>
             </mat-form-field>
             <button mat-raised-button type="submit" [disabled]="playForm.invalid"  color="primary">Add Player</button>

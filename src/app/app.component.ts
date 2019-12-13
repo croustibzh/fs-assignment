@@ -15,12 +15,12 @@ export class AppComponent {
   }
 
 
-openDialog(): void {
-  const dialogRef = this.dialog.open(ModalComponent, {
-    width: '40%',
-    height: '30%',
-    direction: "ltr",
-    autoFocus:true,
-  });
-}
+// openDialog(): void {
+//   const dialogRef = this.dialog.open(ModalComponent, {
+//     width: '40%',
+//     height: '30%',
+//     direction: "ltr",
+//     autoFocus:true,
+//   });
+//}
 }
