@@ -4,5 +4,5 @@
         <button class="selector" mat-raised-button (click)="selectPlayer()" >Players</button>
     </div>
     <div *ngIf="gameview; else player"><app-games-table></app-games-table></div>
-    <ng-template #player><app-guest-table></app-guest-table></ng-template>
+    <ng-template #player><app-admin-players></app-admin-players></ng-template>
 </div>

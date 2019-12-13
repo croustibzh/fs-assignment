@@ -27,10 +27,15 @@
       <div *ngIf="loggedIn; else login"><button mat-flat-button color="primary" (click)="signOut()">sign out</button></div>
       <ng-template #login><button mat-flat-button color="primary" (click)="openLogin()">Login</button></ng-template>
     </mat-toolbar>
-    <!-- Add Content Here -->
-    <input matInput  placeholder="Search" [(ngModel)]= "search" >
-    <router-outlet></router-outlet>
-    <!--<div *ngIf="loggedIn; else guest"><app-admin-select></app-admin-select></div>
-<ng-template #guest><app-guest-table></app-guest-table></ng-template>-->
+    <!-- Add Content Here 
+    <input matInput  placeholder="Search" [(ngModel)]= "search" > -->
+    <!--<router-outlet></router-outlet>-->
+    <div *ngIf="loggedIn; else guest">
+      <app-admin-select></app-admin-select>
+    </div>
+    
+    <ng-template #guest>
+      <app-guest-table></app-guest-table>
+    </ng-template>
   </mat-sidenav-content>
 </mat-sidenav-container>
