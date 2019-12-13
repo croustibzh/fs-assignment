@@ -30,6 +30,7 @@ import { Route } from '@angular/compiler/src/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth-guard.service';
 import { AdminPlayersComponent } from './admin-players/admin-players.component';
+import { AdminPlayerListComponent } from './player/admin-player-list/admin-player-list.component';
 
 const appRoutes: Routes =[
   {path: '', component: GuestTableComponent},
@@ -49,7 +50,8 @@ const appRoutes: Routes =[
     AdminSelectComponent,
     JoinGameComponent,
     EditPlayerComponent,
-    AdminPlayersComponent
+    AdminPlayersComponent,
+    AdminPlayerListComponent
     
   ],
   imports: [
@@ -72,6 +74,6 @@ const appRoutes: Routes =[
     ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[LoginComponent,JoinGameComponent]
+  entryComponents:[LoginComponent,JoinGameComponent,EditPlayerComponent]
 })
 export class AppModule { }
