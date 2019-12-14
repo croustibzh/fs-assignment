@@ -5,6 +5,10 @@ const path = require('path');
 
 const app = express();
 
+// Create link to Angular build directory
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
+
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/fs-assignment'));
 
