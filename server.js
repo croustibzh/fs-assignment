@@ -1,3 +1,27 @@
+
+//Install express server
+const express = require('express');
+const path = require('path');
+
+const happ = express();
+
+// Create link to Angular build directory
+var distDir = __dirname + "/dist/";
+happ.use(express.static(distDir));
+
+// Serve only the static files form the dist directory
+happ.use(express.static(__dirname + '/dist/fs-assignment'));
+
+happ.get('/*', function(req,res) {
+    
+res.sendFile(path.join(__dirname+'/dist/fs-assignment/index.html'));
+});
+
+// Start the app by listening on the default Heroku port
+happ.listen(process.env.PORT || 8080);
+
+
+
 const debug = require('debug')('node-angular');
 const app = require("./backend/app.js");
 const http = require('http');
