@@ -27,8 +27,8 @@ export class GuestTableComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
-  constructor( public dialog: MatDialog) {}
-  joinGame(): void {
-    const dialogRef = this.dialog.open(JoinGameComponent, new MatDialogConfig);
-  }
+  // constructor( public dialog: MatDialog) {}
+  // joinGame(): void {
+  //   const dialogRef = this.dialog.open(JoinGameComponent);
+  // }
 }

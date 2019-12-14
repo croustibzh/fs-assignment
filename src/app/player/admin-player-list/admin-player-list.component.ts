@@ -4,6 +4,8 @@ import{ PlayersService } from '../players.service';
 import { Subscription  } from 'rxjs';
 import { MatDialog } from '@angular/material';
 import { EditPlayerComponent } from 'src/app/edit-player/edit-player.component';
+import { Game } from 'src/app/games-table/game.model';
+import { GamesService } from 'src/app/games-table/games.services';
 @Component({
   selector: 'app-admin-player-list',
   templateUrl: './admin-player-list.component.html',
@@ -15,20 +17,26 @@ export class AdminPlayerListComponent implements OnInit {
   players : Player[] = [];
   private playersSub: Subscription;
   displayedColumns: string[] = ['username', 'rank', 'score', 'fGame', 'time','update'];
-
+  gameList :Game[] = [...this.gService.games];
+  gameListener : Subscription;
   
-  constructor(public playS : PlayersService, public dialog: MatDialog) { }
+  constructor(public playS : PlayersService, public gService: GamesService,public dialog: MatDialog) {
+    this.gameList = this.gService.games;
+    console.log(this.gameList);
+
+   }
 
   ngOnInit() {
     this.playS.getPlayers()
     this.playersSub = this.playS.getPlayersUpdateListener()
     .subscribe((players: Player[])=>
-    this.players = players);
+    this.players = [...players]);
   }
 
   onDelete(id:string){
     console.log("Id to delete:" +id)
     this.playS.deletePlayer(id);
+    this.playS.getPlayersUpdateListener();
   }
   editPlayer(username:string,rank:Int16Array,score:Int16Array,fgame:string,time:string,status:boolean): void {
     

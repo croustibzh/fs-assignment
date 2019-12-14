@@ -1,15 +1,19 @@
 import { Game } from './game.model';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Subject} from 'rxjs';
 import { HttpClient } from "@angular/common/http";
 import { map } from 'rxjs/operators';
 
 
 @Injectable({ providedIn: 'root' })
-export class GamesService {
+export class GamesService implements OnInit {
+  ngOnInit(): void {
+    this.getGames();
+    this.getGamesUpdateListener();
+  }
 
     public games: Game[]=[];
-    private gamesUpdated = new Subject<Game[]>();
+    public gamesUpdated = new Subject<Game[]>();
     constructor(private http: HttpClient) {
     }
 
