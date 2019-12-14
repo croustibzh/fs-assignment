@@ -3,27 +3,18 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { Player } from '../player/player.model';
-import{MatDialog} from '@angular/material'
+
 // TODO: Replace this with your own data model type
 export interface GuestTableItem {
   player: string;
   rank: number;
-  score:Number;
-  timePlayed: String;
+  score:number;
+  timePlayed: string;
   gamesPlayed: string;
   status: boolean;
 
 }
 
-// TODO: replace this with real data from your application
-const EXAMPLE_DATA: GuestTableItem[] = [
-  {player: 'Admin', rank: 0,score:0,timePlayed:'0 days',gamesPlayed:'None',status: true},
-  {player: 'test', rank: 5,score:50,timePlayed:'8 days',gamesPlayed:'minecraft',status: false},
-  {player: 'Bob', rank: 7,score:100,timePlayed:'3 days',gamesPlayed:'league',status: true},
-  {player: 'zain', rank: 1,score:10000,timePlayed:'50 days',gamesPlayed:'8-ball pool',status: true},
-  {player: 'Rob', rank: 4,score:600,timePlayed:'100 days',gamesPlayed:'Mobile',status: false},
-];
 
 /**
  * Data source for the GuestTable view. This class should
@@ -31,7 +22,7 @@ const EXAMPLE_DATA: GuestTableItem[] = [
  * (including sorting, pagination, and filtering).
  */
 export class GuestTableDataSource extends DataSource<GuestTableItem> {
-  data: GuestTableItem[] = EXAMPLE_DATA;
+  data: GuestTableItem[];
   paginator: MatPaginator;
   sort: MatSort;
 

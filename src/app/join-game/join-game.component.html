@@ -10,18 +10,15 @@
             <mat-list-item>Score:{{score}}</mat-list-item>
             <mat-divider></mat-divider>
             <mat-form-field>
-                <mat-label>Favourite Game</mat-label>
-                <select matNativeControl required>
-                  <option value="game1">game1</option>
-                  <option value="game2">game2</option>
-                  <option value="game3">game3</option>
-                  <option value="game4">game4</option>
-                </select>
-              </mat-form-field>
-          </mat-list>
+                <mat-select ngModel name="fGame" ng-required="fGame" required>
+                    <option *ngFor="let g of gameList" value="{{g.title}}">{{g.title}}</option>
+                </mat-select>
+            </mat-form-field>
+        </mat-list>
     </div>
     <div mat-dialog-actions>
-        <button mat-button  (click)="joinGame()">join</button>
-        <button mat-button  (click)="cancelGame()">Cancel</button>
+        <button mat-raised-button color="primary" (click)="joinGame()">join</button>
+        <button mat-raised-button color="accent" (click)="cancelGame()">Cancel</button>
+    
     </div>
-</div>      
+</div>

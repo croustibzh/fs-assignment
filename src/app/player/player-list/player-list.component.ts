@@ -15,7 +15,7 @@ export class PlayerListComponent implements OnInit{
 
   players : Player[] = [];
   private playersSub: Subscription;
-  displayedColumns: string[] = ['username', 'rank', 'score', 'fGame', 'time','status','update'];
+  displayedColumns: string[] = ['username', 'rank', 'score', 'fGame', 'time','status','join'];
 
 
   constructor(public playS : PlayersService, public dialog: MatDialog) { }
@@ -34,7 +34,7 @@ export class PlayerListComponent implements OnInit{
   joinGame(username:string,rank:Int16Array,score:Int16Array,fgame:string,time:string,status:boolean): void {
     const dialogRef = this.dialog.open(JoinGameComponent,{
       width:'500px',
-      height:'35%',
+      height:'45%',
       data: {
         player_username: username,
         player_rank: rank,

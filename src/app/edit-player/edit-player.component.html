@@ -1,44 +1,48 @@
+<mat-form-field class="example-full-width">
+        <input matInput placeholder="username">
+</mat-form-field>
+<mat-divider></mat-divider>
+<mat-form-field>
+<mat-label>rank</mat-label>
+<mat-select matNativeControl required>
+        <mat-option value="1">1</mat-option>
+        <mat-option value="2">2</mat-option>
+        <mat-option value="3">3</mat-option>
+        <mat-option value="4">4</mat-option>
+        <mat-option value="5">5</mat-option>
+        <mat-option value="6">6</mat-option>
+        <mat-option value="7">7</mat-option>
+        <mat-option value="8">8</mat-option>
+        <mat-option value="9">9</mat-option>
+        <mat-option value="10">10</mat-option>
+</mat-select>
+</mat-form-field>
+<mat-divider></mat-divider>
+<mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Score"></textarea>
+</mat-form-field>
+<mat-divider></mat-divider>
+<mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Time"></textarea>
+</mat-form-field>
+<mat-divider></mat-divider>
 
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="username">
-        </mat-form-field>
-        <mat-divider></mat-divider>
-        <mat-label>rank</mat-label>
-        <select matNativeControl required>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select>
-        <mat-divider></mat-divider>
-        <mat-form-field class="example-full-width">
-          <textarea matInput placeholder="Score"></textarea>
-        </mat-form-field>
-        <mat-divider></mat-divider>
-        <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="Time"></textarea>
-        </mat-form-field>
-        <mat-divider></mat-divider>
+<mat-form-field>
         <mat-label>Favourite Game</mat-label>
-        <select matNativeControl required>
-                <option value="game1">1</option>
-                <option value="game2">2</option>
-                <option value="game3">3</option>
-                <option value="game4">4</option>
-        </select>
-        <mat-divider></mat-divider>
-        <mat-label>Status</mat-label>
-        <select matNativeControl required>
-                <option value="true">unavailable</option>
-                <option value="false">availalbe</option>
-        </select>
-        <mat-divider></mat-divider>
-        <button mat-flat-button color='primary'(click) = "update()">Update</button>
-        <button mat-flat-button color='primary' (click)="cancel()">Cancel</button>
+        <mat-select ngModel name="fGame" placeholder="Favourite game" ng-required="fGame" required>
+                <mat-option *ngFor="let g of gameList" value="{{g.title}}">{{g.title}}</mat-option>
+        </mat-select>
+</mat-form-field>
 
+<mat-divider></mat-divider>
+
+<mat-form-field>
+        <mat-label>Status</mat-label>
+        <mat-select ngModel name="availalbe" matNativeControl required>
+                <mat-option value="true">unavailable</mat-option>
+                <mat-option value="false">availalbe</mat-option>
+        </mat-select>
+</mat-form-field>
+<mat-divider></mat-divider>
+<button mat-flat-button color='primary' (click)="update()">Update</button>
+<button mat-flat-button color='primary' (click)="cancel()">Cancel</button>

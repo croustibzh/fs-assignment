@@ -2,3 +2,24 @@ table {
     margin:2rem auto;
     width: 80%;
 }
+
+
+button.update{
+    width: fit-content;
+    height: fit-content;
+    margin: 0 5%;
+    padding: 2px;
+  }
+
+  th {
+      text-align: center;
+  }
+
+  td{
+      text-align: center;
+  }
+  #update {
+      width: 20%;
+      align-content: center;
+      margin: 0 auto;
+  }

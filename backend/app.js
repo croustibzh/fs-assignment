@@ -36,7 +36,7 @@ db.once('open', function() {
     genre:String,
     rating:String,
     publisher:String,
-    release:Date,
+    release:String,
     status:String
   });
 
@@ -51,7 +51,7 @@ db.once('open', function() {
     rating:'5 stars',
     publisher:'Nintendo',
     release:'22/05/2000',
-    status:'Active'
+    status:true
   },
   {
     title:'Fallout 3',
@@ -60,7 +60,7 @@ db.once('open', function() {
     rating:'5 stars',
     publisher:'Bethesda',
     release:'28/10/2008',
-    status:'Active'
+    status:true
   },
   {
     title:'Duke Nukem 3D',
@@ -69,7 +69,7 @@ db.once('open', function() {
     rating:'4 stars',
     publisher:'3D Realms',
     release:'01/04/1996',
-    status:'Active'
+    status:true
   },
   {
     title:'Halo',
@@ -78,7 +78,7 @@ db.once('open', function() {
     rating:'5 stars',
     publisher:'Bungie',
     release:'15/11/2001',
-    status:'Active'
+    status:false
   },
   {
     title:'Call of Duty 2',
@@ -87,7 +87,7 @@ db.once('open', function() {
     rating:'3 stars',
     publisher:'Infinity Ward',
     release:'25/10/2005',
-    status:'Active'
+    status:false
   },
   {
     title:'Stalker Shadow of Tchernobyl',
@@ -96,7 +96,7 @@ db.once('open', function() {
     rating:'4 stars',
     publisher:'GSC Game World',
     release:'20/03/2007',
-    status:'Active'
+    status:true
   }];
   GameM.collection.remove({},console.log('DB erased'))
 

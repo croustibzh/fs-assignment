@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Player } from '../player/player.model';
-import { DialogData } from '../DialogData';
+import { Game } from '../games-table/game.model';
+import { Subscription } from 'rxjs';
+import { GamesService } from '../games-table/games.services';
+
 @Component({
   selector: 'app-join-game',
   templateUrl: './join-game.component.html',
@@ -15,10 +17,11 @@ export class JoinGameComponent implements OnInit {
   time:string;
   status:boolean;
 
-  constructor(public dialogRef: MatDialogRef<JoinGameComponent>,@Inject(MAT_DIALOG_DATA) public data: any) { 
-    console.log(this.data);
+  constructor( public gService: GamesService,public dialogRef: MatDialogRef<JoinGameComponent>,@Inject(MAT_DIALOG_DATA) public data: any) { 
     }
 
+    gameList :Game[] =[];
+  gameListener : Subscription;
   ngOnInit() {
     this.username = this.data.player_username;
     this.rank = this.data.player_rank;
