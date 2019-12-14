@@ -1,5 +1,6 @@
 .adminselect{
-    width: 100%;
+    width: 80%;
+    margin: 20px auto;
 }
 
 .adminview{
@@ -10,7 +11,7 @@
     width: 50%;
 }
 
-#spacer {
-    justify-content: flex-end;
+.spacer {
+    width: 100%;
 
   }

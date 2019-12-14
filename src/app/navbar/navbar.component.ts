@@ -23,7 +23,7 @@ export class NavbarComponent {
   openLogin(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
     width: '500px',
-    height: '25%',
+    height: '50%',
 
     autoFocus:true,
 

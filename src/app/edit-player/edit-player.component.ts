@@ -12,7 +12,7 @@ export class EditPlayerComponent implements OnInit {
   fgame:string;
   time:string;
   status:boolean;
-  constructor(public dialogRef: MatDialogRef<EditPlayerComponent>) { }
+  constructor(public dialogRef: MatDialogRef<EditPlayerComponent>,@Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
   }

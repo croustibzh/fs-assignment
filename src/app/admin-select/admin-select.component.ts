@@ -24,7 +24,7 @@ export class AdminSelectComponent implements OnInit {
   add_player(): void {
     const dialogRef = this.dialog.open(PlayerCreateComponent, {
     width: '500px',
-    height: '75%',
+    height: '80%',
 
     autoFocus:true,
 
