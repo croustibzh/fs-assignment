@@ -6,9 +6,7 @@ import { map } from "rxjs/operators";
 
 @Injectable({ providedIn: "root" })
 export class PlayersService {
-  private players: Player[] = [];
-  private playersUpdated = new Subject<Player[]>();
-
+  
   public playersURL = "http://localhost:3000/api/players";
   selectedPlayer: Player = {
     _id: "",
@@ -21,6 +19,10 @@ export class PlayersService {
   };
 
   constructor(private http: HttpClient) {}
+
+
+  private players: Player[] = [];
+  private playersUpdated = new Subject<Player[]>();
 
   getPlayers() {
     this.http
@@ -43,7 +45,6 @@ export class PlayersService {
       .subscribe(transformedPlayers => {
         this.players = transformedPlayers;
         this.playersUpdated.next([...this.players]);
-        this.getPlayersUpdateListener();
       });
   }
 
@@ -52,14 +53,15 @@ export class PlayersService {
   }
 
   addPlayer(
-    id: string,
+    _id: string,
     username: string,
     rank: number,
     score: number,
     fGame: string,
     status: boolean,
     time: number
-  ) {
+  ) 
+  {
     const player: Player = {
       _id: null,
       username: username,
@@ -74,7 +76,7 @@ export class PlayersService {
       .subscribe(responseData => {
         console.log(responseData);
       });
-    this.players.push(player);
+    this.getPlayers();
     this.playersUpdated.next([...this.players]);
     this.getPlayersUpdateListener();
   }
@@ -84,8 +86,10 @@ export class PlayersService {
       .delete("http://localhost:3000/api/players/" + id)
       .subscribe(() => {
         console.log("player service deleted the player");
-        this.playersUpdated.next([...this.players]);
-        this.getPlayersUpdateListener();
+        
       });
+      this.getPlayers();
+      this.playersUpdated.next([...this.players]);
+      this.getPlayersUpdateListener();
   }
 }

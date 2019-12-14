@@ -48,7 +48,7 @@
               <!-- Username Column -->
         <ng-container matColumnDef="join">
                 <th mat-header-cell *matHeaderCellDef></th>
-                <td mat-cell *matCellDef="let player"><button mat-raised-button color="accent" [disabled]="!player.status==true" (click)="joinGame(player.username,player.rank,player.score,player.fGame,player.time,player.status)">join</button></td>
+                <td mat-cell *matCellDef="let player"><button mat-raised-button color="accent" [disabled]="!player.status==true" (click)="joinGame(player.id,player.username,player.rank,player.score,player.fGame,player.time,player.status)">join</button></td>
               </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Game } from '../games-table/game.model';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable, Subject,} from 'rxjs';
 import { GamesService } from '../games-table/games.services';
+import { HttpClient } from 'selenium-webdriver/http';
 
 @Component({
   selector: 'app-join-game',
@@ -16,20 +17,24 @@ export class JoinGameComponent implements OnInit {
   fgame:string;
   time:string;
   status:boolean;
-
-  constructor( public gService: GamesService,public dialogRef: MatDialogRef<JoinGameComponent>,@Inject(MAT_DIALOG_DATA) public data: any) { 
-    }
-
-    gameList :Game[] =[];
+  gameList : Game[];
   gameListener : Subscription;
+  constructor( public dialogRef: MatDialogRef<JoinGameComponent>, @Inject(MAT_DIALOG_DATA) public data: any, public gService:GamesService) { 
+  }
+
   ngOnInit() {
     this.username = this.data.player_username;
     this.rank = this.data.player_rank;
     this.score = this.data.player_score;
     this.fgame = this.data.fgame;
     this.time = this.data.player_time;
-    this.status = this.data.status;
-  }
+
+    this.gService.getGames()
+    this.gameListener = this.gService.getGamesUpdateListener()
+    .subscribe((games: Game[])=>
+    this.gameList= games);
+    this.gService.getGamesUpdateListener();
+    }
 
   cancelGame(){
     this.dialogRef.close();
