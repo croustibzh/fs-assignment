@@ -12,16 +12,9 @@ export class EditPlayerComponent implements OnInit {
   fgame:string;
   time:string;
   status:boolean;
-  constructor(public dialogRef: MatDialogRef<EditPlayerComponent>,@Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(public dialogRef: MatDialogRef<EditPlayerComponent>) { }
 
   ngOnInit() {
-    console.log(this.data)
-    this.username = this.data.player_username;
-    this.rank = this.data.player_rank;
-    this.score = this.data.player_score;
-    this.fgame = this.data.fgame;
-    this.time = this.data.player_time;
-    this.status = this.data.status;
   }
   update(){
     this.dialogRef.close();
