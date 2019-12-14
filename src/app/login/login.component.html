@@ -17,8 +17,8 @@
             </mat-form-field>
         </mat-list>
     </div>
-    <div mat-dialog-actions  >
-        <button mat-button  (click)="onClick()" style="margin: 0 auto;">Login</button>
+    <div mat-dialog-actions onkeyup.enter="onClick()">
+        <button mat-button  (click)="onClick()"  style="margin: 0 auto;">Login</button>
     </div>
 </div>
 

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, InjectionToken } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,7 +30,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth-guard.service';
 import { AdminPlayersComponent } from './admin-players/admin-players.component';
 import { AdminPlayerListComponent } from './player/admin-player-list/admin-player-list.component';
-
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 const appRoutes: Routes =[
   {path: '', component: GuestTableComponent},
   {path: 'guest', component: GuestTableComponent},
@@ -72,7 +72,10 @@ const appRoutes: Routes =[
     MatSortModule,
     RouterModule.forRoot(appRoutes)
     ],
-  providers: [],
+  providers: [AuthGuard,LoginComponent,{
+    provide: MatDialogRef,
+    useValue: {}
+  }],
   bootstrap: [AppComponent],
   entryComponents:[LoginComponent,JoinGameComponent,EditPlayerComponent,PlayerCreateComponent]
 })

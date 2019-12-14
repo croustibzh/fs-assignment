@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { GuestTableDataSource, GuestTableItem } from './guest-table-datasource';
 import { JoinGameComponent } from '../join-game/join-game.component';
-import {MatDialog} from '@angular/material'
+import {MatDialog, MatDialogConfig} from '@angular/material'
 @Component({
   selector: 'app-guest-table',
   templateUrl: './guest-table.component.html',
@@ -29,7 +29,6 @@ export class GuestTableComponent implements AfterViewInit, OnInit {
   }
   constructor( public dialog: MatDialog) {}
   joinGame(): void {
-    const dialogRef = this.dialog.open(JoinGameComponent);
+    const dialogRef = this.dialog.open(JoinGameComponent, new MatDialogConfig);
   }
-
 }

@@ -31,9 +31,10 @@ export class AdminPlayerListComponent implements OnInit {
     this.playS.deletePlayer(id);
   }
   editPlayer(username:string,rank:Int16Array,score:Int16Array,fgame:string,time:string,status:boolean): void {
-    const dialogRef = this.dialog.open(EditPlayerComponent,{
-      width:'500px',
-      height:'35%',
+    
+    const dialogRef = this.dialog.open(EditPlayerComponent, {
+      width:"30rem",
+      height:"40rem",
       data: {
         player_username: username,
         player_rank: rank,
@@ -41,8 +42,7 @@ export class AdminPlayerListComponent implements OnInit {
         player_fgame: fgame,
         player_time: time,
         player_status: status
-      }
-    });
+      }});
   }
   
 }

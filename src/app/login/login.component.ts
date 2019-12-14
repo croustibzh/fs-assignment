@@ -15,15 +15,9 @@ export class LoginComponent implements OnInit {
   login: boolean;
   hide:boolean = true;
 
-
-
-  constructor(public dialogRef: MatDialogRef<LoginComponent>, @Inject(MAT_DIALOG_DATA) public data: any, public router: Router) { }
-
+  constructor(public dialogRef: MatDialogRef<LoginComponent>, public router: Router) { }
 
   onClick(){
-
-    console.log(this.user);
-    console.log(this.pass);
     if (this.user == this.adminU && this.pass == this.adminP){
       this.login = true;
       this.isAuthenticated();

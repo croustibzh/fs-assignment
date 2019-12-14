@@ -7,7 +7,7 @@ const gameschem = mongoose.Schema({
   genre:{type:String, required:true},
   rating:{type:String, required:true},
   publisher:{type:String, required:true},
-  release:{type:Date, required:true},
+  release:{type:String, required:true},
   status:{type:Boolean, required:true},
 });
 

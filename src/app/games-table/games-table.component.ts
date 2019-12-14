@@ -28,9 +28,15 @@ export class GamesTableComponent implements OnInit {
 
   ngOnInit() {
   this.gS.getGames()
-  this.gamesSub = this.gS.getGamessUpdateListener()
+  this.gamesSub = this.gS.getGamesUpdateListener()
   .subscribe((game: Game[])=>
   this.GamesData = game)
-  console.log(this.GamesData)
+  }
+  
+  ngOnChange(){
+    this.gS.getGames()
+  this.gamesSub = this.gS.getGamesUpdateListener()
+  .subscribe((game: Game[])=>
+  this.GamesData = game)
   }
 }

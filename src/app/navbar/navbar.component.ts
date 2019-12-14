@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, from } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import {MatDialog} from '@angular/material'
+import {MatDialog, MatDialogRef} from '@angular/material'
 import {LoginComponent} from '../login/login.component'
 import { Router } from '@angular/router';
 @Component({
@@ -19,14 +19,12 @@ export class NavbarComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, public dialog: MatDialog, private router: Router) {}
+  constructor(private breakpointObserver: BreakpointObserver, public dialog: MatDialog,public dialogRef: MatDialogRef<LoginComponent>, private router: Router) {}
   openLogin(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
-    width: '500px',
-    height: '25%',
-
+    width: '30%',
+    height: '35%',
     autoFocus:true,
-
      });
 
     dialogRef.afterClosed().subscribe(result => {
