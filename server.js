@@ -3,22 +3,22 @@
 const express = require('express');
 const path = require('path');
 
-const app = express();
+const happ = express();
 
 // Create link to Angular build directory
 var distDir = __dirname + "/dist/";
-app.use(express.static(distDir));
+happ.use(express.static(distDir));
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/fs-assignment'));
+happ.use(express.static(__dirname + '/dist/fs-assignment'));
 
-app.get('/*', function(req,res) {
+happ.get('/*', function(req,res) {
     
 res.sendFile(path.join(__dirname+'/dist/fs-assignment/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8080);
+happ.listen(process.env.PORT || 8080);
 
 
 
