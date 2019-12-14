@@ -33,7 +33,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
         <td mat-cell *matCellDef="let row">{{row.status}}</td>
     </ng-container>
-
+<!--
     <div *ngIf="loggedIn; else join">
       <ng-container matColumnDef="space">
         <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
@@ -51,6 +51,7 @@
         <td mat-cell *matCellDef="let row"><button mat-flat-button color='primary' disabled="{{row.status}}" (click)="joinGame()">join</button></td>
     </ng-container>
   </ng-template>
+-->
 
     
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
