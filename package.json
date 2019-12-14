@@ -7,12 +7,12 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "gitnode server.js",
+    "start": "server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --output-path gbc-fs-assignment  --aot --prod"
+    "postinstall": "ng build --output-path fs-assignment  --aot --prod"
   },
   "private": true,
   "dependencies": {
