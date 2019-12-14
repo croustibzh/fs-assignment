@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { PlayerCreateComponent } from '../player/player-create/player-create.component';
+import {MatDialog} from '@angular/material'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-admin-select',
   templateUrl: './admin-select.component.html',
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class AdminSelectComponent implements OnInit {
   gameview = true;
   playerview = true;
-  constructor() { }
+  constructor(public dialog:MatDialog, public router:Router) { }
 
   selectGame(){
     this.gameview = true;
@@ -18,5 +20,20 @@ export class AdminSelectComponent implements OnInit {
   }
   ngOnInit() {
   }
+
+  add_player(): void {
+    const dialogRef = this.dialog.open(PlayerCreateComponent, {
+    width: '500px',
+    height: '75%',
+
+    autoFocus:true,
+
+     });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.router.navigateByUrl('/admin')
+    });
+  }
+
 
 }

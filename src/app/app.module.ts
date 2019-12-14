@@ -74,6 +74,6 @@ const appRoutes: Routes =[
     ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[LoginComponent,JoinGameComponent,EditPlayerComponent]
+  entryComponents:[LoginComponent,JoinGameComponent,EditPlayerComponent,PlayerCreateComponent]
 })
 export class AppModule { }
