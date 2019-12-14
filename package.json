@@ -2,7 +2,7 @@
   "name": "fs-assignment",
   "version": "0.0.0",
   "engines": {
-    "node": "10.16.3npm",
+    "node": "10.16.3",
     "npm": "6.11.3"
   },
   "scripts": {
