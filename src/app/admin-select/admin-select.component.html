@@ -1,0 +1,18 @@
+<div class="mat-elevation-z8 adminview">
+  <div style="display: block;">
+    <span id="spacer" ></span>
+    <button mat-raised-button> Add a new player</button>
+  </div>
+</div>
+<div class="mat-elevation-z8 adminselect">
+  <button class="selector" mat-raised-button (click)="selectGame()">Games</button>
+  <button class="selector" mat-raised-button (click)="selectPlayer()">Players</button>
+</div>
+<div *ngIf="gameview; else player">
+  <app-games-table></app-games-table>
+</div>
+<div>
+<ng-template #player>
+  <app-admin-player-list></app-admin-player-list>
+</ng-template>
+</div>

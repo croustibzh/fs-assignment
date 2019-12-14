@@ -2,24 +2,25 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { GuestTableDataSource, GuestTableItem } from './guest-table-datasource';
-import { JoinGameComponent } from '../join-game/join-game.component';
+import { AdminPlayersDataSource, AdminPlayersItem } from './admin-players-datasource';
+import { EditPlayerComponent } from '../edit-player/edit-player.component';
 import {MatDialog} from '@angular/material'
 @Component({
-  selector: 'app-guest-table',
-  templateUrl: './guest-table.component.html',
-  styleUrls: ['./guest-table.component.css']
+  selector: 'app-admin-players',
+  templateUrl: './admin-players.component.html',
+  styleUrls: ['./admin-players.component.css']
 })
-export class GuestTableComponent implements AfterViewInit, OnInit {
+export class AdminPlayersComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
-  @ViewChild(MatTable, {static: false}) table: MatTable<GuestTableItem>;
-  dataSource: GuestTableDataSource;
-  
+  @ViewChild(MatTable, {static: false}) table: MatTable<AdminPlayersItem>;
+  dataSource: AdminPlayersDataSource;
+
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['player', 'rank', 'score', 'time','gamesPlayed','status','space'];
+  displayedColumns = ['player', 'rank', 'score', 'time','gamesPlayed','status','update','delete'];
+
   ngOnInit() {
-    this.dataSource = new GuestTableDataSource();
+    this.dataSource = new AdminPlayersDataSource();
   }
 
   ngAfterViewInit() {
@@ -28,8 +29,7 @@ export class GuestTableComponent implements AfterViewInit, OnInit {
     this.table.dataSource = this.dataSource;
   }
   constructor( public dialog: MatDialog) {}
-  joinGame(): void {
-    const dialogRef = this.dialog.open(JoinGameComponent);
+  editPlayer(): void {
+    const dialogRef = this.dialog.open(EditPlayerComponent);
   }
-
 }

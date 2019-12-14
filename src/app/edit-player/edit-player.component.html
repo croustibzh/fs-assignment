@@ -1,0 +1,44 @@
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Player">
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <mat-label>rank</mat-label>
+        <select matNativeControl required>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <mat-divider></mat-divider>
+        <mat-form-field class="example-full-width">
+          <textarea matInput placeholder="Score"></textarea>
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <mat-form-field class="example-full-width">
+                <textarea matInput placeholder="Time"></textarea>
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <mat-label>Favourite Game</mat-label>
+        <select matNativeControl required>
+                <option value="game1">1</option>
+                <option value="game2">2</option>
+                <option value="game3">3</option>
+                <option value="game4">4</option>
+        </select>
+        <mat-divider></mat-divider>
+        <mat-label>Status</mat-label>
+        <select matNativeControl required>
+                <option value="true">unavailable</option>
+                <option value="false">availalbe</option>
+        </select>
+        <mat-divider></mat-divider>
+        <button mat-flat-button color='primary'(click) = "update()">Update</button>
+        <button mat-flat-button color='primary' (click)="cancel()">Cancel</button>
+

@@ -23,7 +23,19 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { GamesTableComponent } from './games-table/games-table.component';
+import { AdminSelectComponent } from './admin-select/admin-select.component';
+import { JoinGameComponent } from './join-game/join-game.component';
+import { EditPlayerComponent } from './edit-player/edit-player.component';
+import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth-guard.service';
+import { AdminPlayersComponent } from './admin-players/admin-players.component';
+import { AdminPlayerListComponent } from './player/admin-player-list/admin-player-list.component';
 
+const appRoutes: Routes =[
+  {path: '', component: GuestTableComponent},
+  {path: 'guest', component: GuestTableComponent},
+  {path: 'admin', canActivate: [AuthGuard], component: AdminSelectComponent}
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,8 +45,14 @@ import { GamesTableComponent } from './games-table/games-table.component';
     NavbarComponent,
     LoginComponent,
     GuestTableComponent,
-    GamesTableComponent
+    GamesTableComponent,
+    AdminSelectComponent,
+    JoinGameComponent,
+    EditPlayerComponent,
+    AdminPlayersComponent,
+    AdminPlayerListComponent
     
+
   ],
   imports: [
     BrowserModule,
@@ -51,10 +69,11 @@ import { GamesTableComponent } from './games-table/games-table.component';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    RouterModule.forRoot(appRoutes)
     ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[LoginComponent]
+  entryComponents:[LoginComponent,JoinGameComponent,EditPlayerComponent]
 })
 export class AppModule { }

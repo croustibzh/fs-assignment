@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Player } from '../player.model';
 import{ PlayersService } from '../players.service';
 import { Subscription  } from 'rxjs';
+import { MatDialog } from '@angular/material';
+import { JoinGameComponent } from 'src/app/join-game/join-game.component';
 
 
 @Component({
@@ -13,9 +15,16 @@ export class PlayerListComponent implements OnInit{
 
   players : Player[] = [];
   private playersSub: Subscription;
+<<<<<<< HEAD
   displayedColumns: string[] = ['username', 'rank', 'score', 'fGame', 'time', 'status','update'];
   
   constructor(public playS : PlayersService) { }
+=======
+  displayedColumns: string[] = ['username', 'rank', 'score', 'fGame', 'time','status','update'];
+
+
+  constructor(public playS : PlayersService, public dialog: MatDialog) { }
+>>>>>>> 0bd0e66046794c2d2499412435b844a7087fe5b6
 
   ngOnInit() {
     this.playS.getPlayers()
@@ -28,7 +37,16 @@ export class PlayerListComponent implements OnInit{
     console.log("Id to delete:" +id)
     this.playS.deletePlayer(id);
   }
+  joinGame(id:string): void {
+<<<<<<< HEAD
+    const dialogRef = this.dialog.open(JoinGameComponent,{
+      width:'500px',
+      height:'35%'
+    });
+=======
+    const dialogRef = this.dialog.open(JoinGameComponent,{data: { any: this.players[id]}} );
+>>>>>>> a90e4161e6f712365c4b0ee80518f799818762ec
+  }
 }
-  
 
-  
+

@@ -3,10 +3,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { Player } from '../player/player.model';
-import{MatDialog} from '@angular/material'
+
 // TODO: Replace this with your own data model type
-export interface GuestTableItem {
+export interface AdminPlayersItem {
   player: string;
   rank: number;
   score:Number;
@@ -17,7 +16,7 @@ export interface GuestTableItem {
 }
 
 // TODO: replace this with real data from your application
-const EXAMPLE_DATA: GuestTableItem[] = [
+const EXAMPLE_DATA: AdminPlayersItem[] = [
   {player: 'Admin', rank: 0,score:0,timePlayed:'0 days',gamesPlayed:'None',status: true},
   {player: 'test', rank: 5,score:50,timePlayed:'8 days',gamesPlayed:'minecraft',status: false},
   {player: 'Bob', rank: 7,score:100,timePlayed:'3 days',gamesPlayed:'league',status: true},
@@ -30,8 +29,8 @@ const EXAMPLE_DATA: GuestTableItem[] = [
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class GuestTableDataSource extends DataSource<GuestTableItem> {
-  data: GuestTableItem[] = EXAMPLE_DATA;
+export class AdminPlayersDataSource extends DataSource<AdminPlayersItem> {
+  data: AdminPlayersItem[] = EXAMPLE_DATA;
   paginator: MatPaginator;
   sort: MatSort;
 
@@ -44,7 +43,7 @@ export class GuestTableDataSource extends DataSource<GuestTableItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<GuestTableItem[]> {
+  connect(): Observable<AdminPlayersItem[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
@@ -68,7 +67,7 @@ export class GuestTableDataSource extends DataSource<GuestTableItem> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: GuestTableItem[]) {
+  private getPagedData(data: AdminPlayersItem[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -77,7 +76,7 @@ export class GuestTableDataSource extends DataSource<GuestTableItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: GuestTableItem[]) {
+  private getSortedData(data: AdminPlayersItem[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }

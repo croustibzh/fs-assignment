@@ -10,17 +10,6 @@ import { ModalComponent } from './dialog/modal.component';
 export class AppComponent {
   title = 'frontend';
 
-  constructor(public dialog : MatDialog){
+  constructor(){}
 
-  }
-
-
-openDialog(): void {
-  const dialogRef = this.dialog.open(ModalComponent, {
-    width: '40%',
-    height: '30%',
-    direction: "ltr",
-    autoFocus:true,
-  });
-}
 }

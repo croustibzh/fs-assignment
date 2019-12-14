@@ -1,9 +1,9 @@
 export interface Player {
-id:string,
+_id:string;
 username: string;
 rank: number;
 score: number;
-status:string;
-time: string;
+status:boolean;
+time: number;
 fGame: string;
 }
