@@ -12,6 +12,9 @@
 }
 
 .spacer {
-    width: 100%;
-
+    width: 20%;
+    margin: auto;
   }
+#spacer{
+    width: 80%;
+}

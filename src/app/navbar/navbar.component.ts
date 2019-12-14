@@ -22,8 +22,8 @@ export class NavbarComponent {
   constructor(private breakpointObserver: BreakpointObserver, public dialog: MatDialog, private router: Router) {}
   openLogin(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
-    width: '500px',
-    height: '50%',
+    width: '300px',
+    height: '40%',
 
     autoFocus:true,
 
