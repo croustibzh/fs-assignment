@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Player } from '../player.model';
 import{ PlayersService } from '../players.service';
 import { Subscription  } from 'rxjs';
-import { MatDialog } from '@angular/material';
+import { MatDialog , MAT_DIALOG_DATA} from '@angular/material';
 import { JoinGameComponent } from 'src/app/join-game/join-game.component';
 
 
@@ -37,15 +37,19 @@ export class PlayerListComponent implements OnInit{
     console.log("Id to delete:" +id)
     this.playS.deletePlayer(id);
   }
-  joinGame(id:string): void {
-<<<<<<< HEAD
+  joinGame(username:string,rank:Int16Array,score:Int16Array,fgame:string,time:string,status:boolean): void {
     const dialogRef = this.dialog.open(JoinGameComponent,{
       width:'500px',
-      height:'35%'
+      height:'35%',
+      data: {
+        player_username: username,
+        player_rank: rank,
+        player_score: score,
+        player_fgame: fgame,
+        player_time: time,
+        player_status: status
+      }
     });
-=======
-    const dialogRef = this.dialog.open(JoinGameComponent,{data: { any: this.players[id]}} );
->>>>>>> a90e4161e6f712365c4b0ee80518f799818762ec
   }
 }
 
